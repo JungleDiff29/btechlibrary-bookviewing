@@ -12,7 +12,7 @@ import emailjs from 'emailjs-com';
 import { DataGrid, GridToolbarQuickFilter, GridLinkOperator } from '@mui/x-data-grid';
 
 import { getDatabase, ref , get,query  } from 'firebase/database';
-import { logout, useAuth,app ,updateEvent } from '../../src/utils/Firebase';
+import { logout, useAuth,app ,updateEvents } from '../../src/utils/Firebase';
 
 import EventAdd from '../../src/components/Event-components/event.add';
 
@@ -183,7 +183,7 @@ const handleChange = (e) =>{
  const description1 =  useRef(null);
 
 const updateEventData = () => {
-updateEvent(
+updateEvents(
   id,
   eventTitle1.current.value,
   timeStart1.current.value,
