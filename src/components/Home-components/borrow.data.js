@@ -72,7 +72,7 @@ const reducerValue = useReducer(x => x + 1, 0);
       border:"1px solid #ccc"}}>
         
         <div 
-        style={{ width: "1040px", 
+        style={{ width: "1200px", 
         height: "500px", 
         display:"flex", 
         boxShadow: "20"}}>
@@ -87,7 +87,7 @@ const reducerValue = useReducer(x => x + 1, 0);
             </Typography>
 
         <DataGrid
-        sx={{ width:"500px", 
+        sx={{ width:"550px", 
         height:"450px", 
         marginLeft: "10px", 
         bgcolor:"background.paper",
@@ -127,7 +127,7 @@ const reducerValue = useReducer(x => x + 1, 0);
             </Typography>
 
         <DataGrid
-        sx={{ width:"500px", 
+        sx={{ width:"550px", 
         height:"450px", 
         marginRight: "10px" ,
         bgcolor:"background.paper",
