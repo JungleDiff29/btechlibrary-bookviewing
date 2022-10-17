@@ -18,10 +18,10 @@ export default function Signup() {
     setLoading(true);
     try {
       await signup(emailRef.current.value, passwordRef.current.value);
-        alert("Successfully Created!");
+      alert("Successfully Created!");
         router.push("/admin/Home");
     }catch {
-       alert("Error");
+       alert("Error occured!");
      }
     setLoading(false);
   }

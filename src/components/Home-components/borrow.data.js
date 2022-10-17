@@ -114,7 +114,7 @@ const reducerValue = useReducer(x => x + 1, 0);
         <hr 
         style={{ backgroundColor:"#ccc",
         border:"none",
-        height:"78vh",
+        height:"100%",
         padding:"2px"}}/>
 
         <Card 

@@ -33,7 +33,7 @@ export default function Login() {
         alert("Successfully Login!");
       router.push("/admin/Home");
       } catch {
-        alert("Error!");
+        alert("Error occured!");
       }
       setLoading(false);
     }

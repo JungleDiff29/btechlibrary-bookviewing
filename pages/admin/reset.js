@@ -6,7 +6,7 @@ import Image from "next/image";
 import styled from '@emotion/styled';
 import { reset, useAuth } from "../../src/utils/Firebase";
 
-export default function Signup() {
+export default function Reset() {
     const [email, setEmail] = useState('')
     const currentUser = useAuth();
     const [loading,setLoading] = useState(false);
@@ -14,7 +14,7 @@ export default function Signup() {
   async function handleReset() {
     setLoading(true);
     try {
-      await reset(currentUser, email, password);
+      await reset(currentUser, email);
         alert("Successfully Send!");
     }catch {
        alert("Error!");
@@ -39,7 +39,7 @@ export default function Signup() {
 
         <Image src="/img/logo.png" alt="logo" width={350} height={250}/>
 
-        <h2>ADMIN SIGNUP</h2>
+        <h2>RESET PASSWORD</h2>
         <table>
           <tr>
             <td><label>Email:</label></td>

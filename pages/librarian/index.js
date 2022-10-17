@@ -22,7 +22,7 @@ export default function Login() {
         alert("Successfully Login!");
       router.push("/librarian/Home");
       } catch {
-        alert("Error!");
+        alert("Error occured!");
       }
       setLoading(false);
     }
