@@ -74,10 +74,9 @@ const [book, setBook] = useState([]);
 
 function getBookData() {
   const db = getDatabase(app);
-  const empRef = query(
-    ref(db, "book"));
+  const bookRef = query(ref(db, "book"));
 
-  get(empRef).then((snapshot) => {
+  get(bookRef).then((snapshot) => {
     var book = [];
 
     snapshot.forEach((childSnapshot) => {
@@ -114,14 +113,18 @@ useEffect(() =>{
 
         <Card 
 	variant="outlined" 
-        sx={{ margin:"10px" ,
+        sx={{ margin:"5px" ,
 	height:"100vh",
         justifyContent:"center",
-        alignItems:"center"}}>
+        alignItems:"center", 
+	display: "flex", 
+	flexDirection:"column" }}>
 
         <DataGrid 
             sx={{ width:"600px", 
             height:"500px",
+	    autoHeight={true}
+     	    disableExtendRowFullWidth={true}
             boxShadow:"10",
             padding:"10px",
             bgcolor:"background.paper",
