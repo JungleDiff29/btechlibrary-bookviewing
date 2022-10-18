@@ -117,9 +117,7 @@ useEffect(() =>{
         sx={{ margin:"10px" ,
 	height:"100vh",
         justifyContent:"center",
-        alignItems:"center",
-        display:"flex",
-        flexDirection:"column"}}>
+        alignItems:"center"}}>
 
         <DataGrid 
             sx={{ width:"600px", 
