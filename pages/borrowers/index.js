@@ -94,6 +94,7 @@ useEffect(() =>{
   return (
     <div style={myStyle}>
     <OuterBox>
+
     <Box           
     sx={{ marginLeft:"10px" }}>
           <Image 
@@ -102,20 +103,24 @@ useEffect(() =>{
           width={100} 
           height={90}/>
     </Box>
+
     <Typography 
-    sx={{ color:"#f1f1f1",
-    marginLeft:"20px" }}>
-      <h1>BOOK LIST</h1>
+	variant="h3" 
+   	sx={{ color:"#f1f1f1",
+   	marginLeft:"20px" }}>
+      BOOK LIST
     </Typography>
     </OuterBox>
 
         <Card 
+	variant="outlined" 
         sx={{ margin:"10px" ,
-              height:"100vh",
-              justifyContent:"center",
-              alignItems:"center",
-              display:"flex",
-              flexDirection:"column"}}>
+	height:"100vh",
+        justifyContent:"center",
+        alignItems:"center",
+        display:"flex",
+        flexDirection:"column"}}>
+
         <DataGrid 
             sx={{ width:"600px", 
             height:"500px",
