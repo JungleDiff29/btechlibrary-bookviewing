@@ -135,8 +135,6 @@ useEffect(() =>{
                 columns={columns}
                 rows={book}
                 rowsPerPageOptions={[5, 12, 25]}
-           	autoHeight={true}
-     	  	disableExtendRowFullWidth={true}
 		getRowId={(book) => 
                 book.bkId}
                 initialState={{
