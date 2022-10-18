@@ -123,8 +123,6 @@ useEffect(() =>{
         <DataGrid 
             sx={{ width:"600px", 
             height:"500px",
-	    autoHeight={true}
-     	    disableExtendRowFullWidth={true}
             boxShadow:"10",
             padding:"10px",
             bgcolor:"background.paper",
@@ -137,7 +135,9 @@ useEffect(() =>{
                 columns={columns}
                 rows={book}
                 rowsPerPageOptions={[5, 12, 25]}
-                getRowId={(book) => 
+           	autoHeight={true}
+     	  	disableExtendRowFullWidth={true}
+		getRowId={(book) => 
                 book.bkId}
                 initialState={{
                   filter: {
