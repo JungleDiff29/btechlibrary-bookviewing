@@ -1,11 +1,10 @@
 import React ,{ useReducer, useState, useEffect} from 'react'
-import styled from '@emotion/styled';
-import { Box ,Card, Typography} from "@mui/material";
+import { Box ,Card, Typography, AppBar,IconButton,Divider } from "@mui/material";
+import Toolbar from '@mui/material/Toolbar';
+import BookIcon from '@mui/icons-material/Book';
 
 import Image from "next/image";
-import { DataGrid  ,
-   GridToolbarQuickFilter,
-  GridLinkOperator} from '@mui/x-data-grid';
+import { DataGrid, GridToolbarQuickFilter, GridLinkOperator} from '@mui/x-data-grid';
 import { getDatabase, ref , get ,query } from "firebase/database";
 import {app} from '../../src/utils/Firebase';
 
@@ -60,7 +59,7 @@ function QuickSearchToolbar() {
       field: 'status',
       headerName: 'Status',
       headerClassName: 'super-app-theme--header', 
-      width: 200,
+      width: 150,
     },
   ];
 
@@ -74,9 +73,10 @@ const [book, setBook] = useState([]);
 
 function getBookData() {
   const db = getDatabase(app);
-  const bookRef = query(ref(db, "book"));
+  const empRef = query(
+    ref(db, "book"));
 
-  get(bookRef).then((snapshot) => {
+  get(empRef).then((snapshot) => {
     var book = [];
 
     snapshot.forEach((childSnapshot) => {
@@ -92,42 +92,46 @@ useEffect(() =>{
 
   return (
     <div style={myStyle}>
-    <OuterBox>
-
-    <Box           
-    sx={{ marginLeft:"10px" }}>
-          <Image 
-          src="/img/page.png" 
-          alt="logo" 
-          width={100} 
-          height={90}/>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar variant="dense">
+          <Box>
+            <Image 
+            src="/img/page.png" 
+            alt="logo" 
+            width={110} 
+            height={100}/>
+          </Box>
+          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ m: 5 }}>
+            <BookIcon />
+          </IconButton>
+          <Typography variant="h6" color="inherit" component="div">
+              BTECH LIBRARY BOOK LIST
+          </Typography>
+        </Toolbar>
+      </AppBar>
     </Box>
 
-    <Typography 
-	variant="h3" 
-   	sx={{ color:"#f1f1f1",
-   	marginLeft:"20px" }}>
-      BOOK LIST
-    </Typography>
-    </OuterBox>
 
         <Card 
-	variant="outlined" 
-        sx={{ margin:"5px" ,
-	height:"100vh",
-        justifyContent:"center",
-        alignItems:"center", 
-	display: "flex", 
-	flexDirection:"column" }}>
+        sx={{ margin:"auto" ,
+              height:"100vh",
+              width:"600px",
+              justifyContent:"center",
+              alignItems:"center",
+              display:"flex"}}>
+
+        <Divider/>
 
         <DataGrid 
             sx={{ width:"600px", 
             height:"500px",
             boxShadow:"10",
             padding:"10px",
+            margin:"auto",
             bgcolor:"background.paper",
             '& .super-app-theme--header': {
-              backgroundColor: '#009933',
+              backgroundColor: '#1f1f2e',
               color:"white",
             },
           }}
@@ -135,13 +139,12 @@ useEffect(() =>{
                 columns={columns}
                 rows={book}
                 rowsPerPageOptions={[5, 12, 25]}
-		getRowId={(book) => 
-                book.bkId}
+                getRowId={(book) => book.bkId}
                 initialState={{
                   filter: {
                     filterModel: {
                       items: [
-                        { columnField: 'status', operatorValue: 'contains', value: "Available" },
+                        { columnField: 'status', operatorValue: 'equals', value: "Available" },
                       ],
                       quickFilterLogicOperator: GridLinkOperator.Or,
                     },
@@ -154,17 +157,8 @@ useEffect(() =>{
   )
 }
 
-const OuterBox = styled.div`
-    display: flex;
-    height: 90px;
-    width: 100%;
-    background-color: #003311; 
-    font-family: Sans-Serif;
-    font-size: 20px;
-`;
-  
-
   const myStyle = {
     backgroundColor: 'white',
+    margin: "auto",
 };
 
