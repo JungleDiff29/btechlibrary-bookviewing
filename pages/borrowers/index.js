@@ -125,7 +125,7 @@ useEffect(() =>{
 
         <DataGrid 
             sx={{ width:"600px", 
-            height:"800px",
+            height:"600px",
             boxShadow:"10",
             padding:"10px",
             margin:"auto",
