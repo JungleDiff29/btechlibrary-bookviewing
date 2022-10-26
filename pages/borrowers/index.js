@@ -5,7 +5,7 @@ import BookIcon from '@mui/icons-material/Book';
 
 import Image from "next/image";
 import { DataGrid, GridToolbarQuickFilter, GridLinkOperator} from '@mui/x-data-grid';
-import { getDatabase, ref , get ,query } from "firebase/database";
+import { getDatabase, ref , get ,query,equalTo,orderByChild } from "firebase/database";
 import {app} from '../../src/utils/Firebase';
 
 function QuickSearchToolbar() {
@@ -69,38 +69,38 @@ export default function Bookborrow() {
   const reducerValue = useReducer(x => x + 1, 0);
 
 //read data
-const [book, setBook] = useState([]);
+const [available, setAvailable] = useState([]);
 
-function getBookData() {
+function getAvailableData() {
   const db = getDatabase(app);
   const empRef = query(
-    ref(db, "book"));
+    ref(db, "book"),orderByChild("status"),equalTo("Available"));
 
   get(empRef).then((snapshot) => {
-    var book = [];
+    var available = [];
 
     snapshot.forEach((childSnapshot) => {
-      book.push(childSnapshot.val());
+      available.push(childSnapshot.val());
     });
-    setBook(book);
+    setAvailable(available);
   });
 }
 
 useEffect(() =>{
-  getBookData();   
+  getAvailableData();   
   },[reducerValue]);
 
   return (
     <div style={myStyle}>
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor:"#1f1f2e" }}>
         <Toolbar variant="dense">
           <Box>
             <Image 
             src="/img/page.png" 
             alt="logo" 
             width={110} 
-            height={100}/>
+            height={90}/>
           </Box>
           <IconButton edge="start" color="inherit" aria-label="menu" sx={{ m: 5 }}>
             <BookIcon />
@@ -137,15 +137,13 @@ useEffect(() =>{
           }}
             
                 columns={columns}
-                rows={book}
+                rows={available}
                 rowsPerPageOptions={[5, 12, 25]}
-                getRowId={(book) => book.bkId}
+                getRowId={(available) => available.bkId}
                 initialState={{
                   filter: {
                     filterModel: {
-                      items: [
-                        { columnField: 'status', operatorValue: 'equals', value: "Available" },
-                      ],
+                      items: [],
                       quickFilterLogicOperator: GridLinkOperator.Or,
                     },
                   },
