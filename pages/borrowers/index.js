@@ -92,8 +92,8 @@ useEffect(() =>{
 
   return (
     <div style={myStyle}>
-    <Box sx={{ flexGrow: 1 ,width:"100%"}}>
-      <AppBar position="static" sx={{ backgroundColor:"#1f1f2e", margin:"auto"}}>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" sx={{ backgroundColor:"#1f1f2e" }}>
         <Toolbar variant="dense">
           <Box>
             <Image 
