@@ -106,7 +106,7 @@ useEffect(() =>{
             <BookIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" component="div">
-              BTECH LIBRARY AVAILABLE BOOK LIST
+              BTECH LIBRARY BOOK LIST
           </Typography>
         </Toolbar>
       </AppBar>
