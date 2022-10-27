@@ -92,8 +92,8 @@ useEffect(() =>{
 
   return (
     <div style={myStyle}>
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor:"#1f1f2e", width :"1200px"}}>
+    <Box sx={{ flexGrow: 1 ,width:"100%"}}>
+      <AppBar position="static" sx={{ backgroundColor:"#1f1f2e", margin:"auto"}}>
         <Toolbar variant="dense">
           <Box>
             <Image 
@@ -106,7 +106,7 @@ useEffect(() =>{
             <BookIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" component="div">
-              BTECH LIBRARY BOOK LIST
+              BTECH LIBRARY AVAILABLE BOOK LIST
           </Typography>
         </Toolbar>
       </AppBar>
